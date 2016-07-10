@@ -1,0 +1,64 @@
+[Soma]
+dV/dt = (iL + iSyn + iCoupleDend)/cSoma_pyr : mvolt
+iL = -gLSoma_pyr*(V-vRest_pyr) : pamp
+iAMPA = -gTotAMPA*(V-vE_pyr) : pamp
+iNMDA = -gTotNMDA*(V-vE_pyr)/(1+exp(-(V-vHalfNMDA)/vSpreadNMDA)) : pamp
+iGABA = -gTotGABA*(V-vI_pyr) : pamp
+iSyn = iAMPA + iNMDA + iGABA : pamp
+iCoupleDend = - gTotCouple_pyr*(V-vAveDend) : pamp
+dvShadow/dt = (iShadowL + iShadowSyn - gTotCouple_pyr*(vShadow-vAveDend))/cSoma_pyr : mvolt
+iShadowL = -gLSoma_pyr*(vShadow-vRest_pyr) : pamp
+iShadowAMPA = -gTotAMPA*(vShadow-vE_pyr) : pamp
+iShadowNMDA = -gTotNMDA*(vShadow-vE_pyr)/(1+exp(-(vShadow-vHalfNMDA)/vSpreadNMDA)) : pamp
+iShadowGABA = -gTotGABA*(vShadow-vI_pyr) : pamp
+iShadowSyn = iShadowAMPA + iShadowNMDA + iShadowGABA: pamp
+dgTotAMPA/dt = -gTotAMPA/tauAMPA : nsiemens
+dgTotGABA/dt = -gTotGABA/tauGABA_soma : nsiemens
+gTotNMDA : nsiemens
+vAveDend : mvolt
+dbAPCa/dt = (-bAPCa+bAPCa_rise)/tau_Ca_bAP_decay : 1
+dbAPCa_rise/dt = -bAPCa_rise/tau_Ca_bAP_rise : 1
+
+
+[Dend]
+dV/dt = (iDendL + iDendSyn - gEachCouple_pyr*(V-vSoma))/cDend_pyr : mvolt
+iDendL = -gLDend_pyr*(V-vRest_pyr) : pamp
+iDendAMPA = -gTotAMPA*(V-vE_pyr) : pamp
+iDendGABA = -gTotGABA*(V-vI_pyr) : pamp
+iDendGABAB = -gTotGABAB*0.03333*(0.5-2/(1+exp((V*1000+98.73)/12.5))) : pamp 
+iDendSyn = iDendAMPA + iTotNMDA + iDendGABA + iDendGABAB: pamp
+dgTotAMPA/dt = -gTotAMPA/tauAMPA : nsiemens
+dgTotGABA/dt = -gTotGABA/tauGABA : nsiemens
+iTotNMDA = iTotNMDA1 + iTotNMDA2: pamp
+iTotNMDA1 : pamp
+iTotNMDA2 : pamp
+vSoma : mvolt
+dgTotGABAB/dt = (-gTotGABAB+norm_factor_GABAB*gTotGABABRise)/tauGABABDecay : nsiemens
+dgTotGABABRise/dt = -gTotGABABRise/tauGABABRise : nsiemens
+
+[Dend_only]
+dV/dt = (iDendL + iDendSyn - gEachCouple_pyr*(V-vSoma))/cDend_pyr : mvolt
+iDendL = -gLDend_pyr*(V-vRest_pyr) : pamp
+iDendAMPA = -gTotAMPA*(V-vE_pyr) : pamp
+iDendGABA = -gTotGABA*(V-vI_pyr) : pamp
+iDendSyn = iDendAMPA + iTotNMDA + iDendGABA: pamp
+dgTotAMPA/dt = -gTotAMPA/tauAMPA : nsiemens
+dgTotGABA/dt = -gTotGABA/tauGABA : nsiemens
+iTotNMDA = iTotNMDA1 + iTotNMDA2: pamp
+iTotNMDA1 : pamp
+iTotNMDA2 : pamp
+vSoma : mvolt
+dbAPCa/dt = (-bAPCa+bAPCa_rise)/tau_Ca_bAP_decay : 1
+dbAPCa_rise/dt = -bAPCa_rise/tau_Ca_bAP_rise : 1
+
+[Soma_only]
+dV/dt = (iL + iSyn + iClamp)/cSoma_pyr : mvolt
+iL = -gLSoma_pyr*(V-vRest_pyr) : pamp
+iAMPA = -gTotAMPA*(V-vE_pyr) : pamp
+iNMDA = -gTotNMDA*(V-vE_pyr)/(1+exp(-(V-vHalfNMDA)/vSpreadNMDA)) : pamp
+iGABA = -gTotGABA*(V-vI_pyr) : pamp
+iSyn = iAMPA + iNMDA + iGABA : pamp
+dgTotAMPA/dt = -gTotAMPA/tauAMPA : nsiemens
+dgTotGABA/dt = -gTotGABA/tauGABA_soma : nsiemens
+gTotNMDA : nsiemens
+iClamp : pamp

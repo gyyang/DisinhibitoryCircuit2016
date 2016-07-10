@@ -1,0 +1,110 @@
+# Parameters
+
+dt  0.02 ms
+
+record_dt 0.5 ms
+
+num_DendEach 10
+
+# reversal potential of excitatory input
+vE  0.0  mvolt
+# reversal potential of inhibitory input
+vI  -70.0  mvolt
+
+# AMPA gating variable time constant
+tauAMPA  2.0  msecond
+# GABA gating variable time constant
+tauGABA  20.0  msecond
+# GABAB gating variable decay time constant
+tauGABABDecay 80.0  msecond
+# GABAB gating variable rise time constant
+tauGABABRise 30.0  msecond
+
+# NMDA Decay time constant
+tauNMDADecay  100.0  msecond
+# NMDA rise time constant
+tauNMDARise  2.0  msecond
+
+# order of the ODE method
+numericalOrder 1 
+
+
+# Parameters pyramidal soma and dendrite
+# unit cm^2 somatic area
+areaSoma_pyr  5.0*10**-5 cm**2                        
+
+# unit cm^2 dendritic area
+areaDend_pyr 2.0*10**-5 cm**2                   
+
+# nS/cm^2 leak conductance, default value gives 20ms membrane time constant
+gDensitySomaLeak_pyr 5.0*10**4 nS/cm**2                  
+
+# nS/cm^2 leak conductance, default value gives 5ms membrane time constant
+gDensityDendLeak_pyr 20.0*10**4 nS/cm**2                 
+
+# nS total somatic leak
+gLSoma_pyr 2.5 nS   
+
+# nS total dendritic leak
+gLDend_pyr 4.0 nS     
+
+# pF/cm^2 somatic membrane capacitance
+cDensity_pyr 1.0*10**6 pF/cm**2                            
+
+# pF total somatic conductance
+cSoma_pyr 50.0 pF               
+
+# pF total dendritic conductance
+cDend_pyr 20.0 pF               
+
+# constant used in NMDA current (modified)
+# alphaNMDA  0.5  1/msecond   
+alphaNMDA  0.3  1/msecond                   
+
+# constant in voltage-dependent magnesium block
+vHalfNMDA  -19.9  mvolt                   
+# constant in voltage-dependent magnesium block
+vSpreadNMDA  12.48  mvolt                 
+# spike threshold
+vThres_pyr  -50.0  mvolt                        
+# reset value
+vReset_pyr  -55.0  mvolt                        
+# resting potential
+vRest_pyr  -70.0  mvolt                         
+# reversal potential of excitatory input
+vE_pyr  0.0  mvolt                              
+vI_pyr  -70.0  mvolt 
+# refractory period
+refracTime_pyr  2.0  msecond  
+
+gEachCouple_pyr  4.0  nS
+
+# back-propagating action potential voltage-kick on dendrites
+bAP_amp 10.0 mvolt
+bAP_delay 3.0 msecond
+
+# Calcium related parameters
+# time constant (see Graupner & Brunel 2011)
+tau_Ca_bAP_decay 30 msecond
+tau_Ca_bAP_rise 2 msecond
+
+tau_Ca_NMDA 30 msecond 
+
+# single AMPA conductance
+gAMPA 0.4 nsiemens
+# NMDA conductance
+gNMDA 2.5 nsiemens
+# single GABA conductance
+gGABA 4.0 nsiemens
+
+# in vivo condition parameters
+gEachCouple_pyr_vivo 0.8 nsiemens 
+
+
+# new parameter high firing 2014-10-15
+rate_bgE 500 Hz
+rate_bgI 150 Hz
+weight_bgE 2.5 nsiemens
+weight_bgI 4.0 nsiemens
+# GABA gating variable time constant targeting Soma
+tauGABA_soma  10.0  msecond
