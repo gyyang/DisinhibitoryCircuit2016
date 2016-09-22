@@ -20,6 +20,49 @@ args = {'figpath':figpath,
         'eqsfile':datapath+'equations.txt'}
 
 #=============================================================================
+# Study the property of a single neuron model
+#=============================================================================
+
+import StudySingleNeuronProperty
+
+SN = StudySingleNeuronProperty.Study(**args)
+
+# Plot an example trace of NMDA plateau potential
+#SN.run_NMDAspike()
+#SN.plot_NMDAspike(remakeFig=True)
+
+# Run dendritic voltage as a function of disinhibition rate and excitatory rate
+#SN.run_EvsDI(denseinh=False, load_previous = False, name = 'NMDA',inh_list = [0,30], rate_range=300)
+#SN.run_EvsDI(denseinh=False, load_previous = False, name = 'AMPA')
+#SN.run_EvsDI(denseinh=False, load_previous = False, name = 'NMDA_nonsatur',inh_list = [0,30], rate_range=300)
+
+#SN.plot_EvsDI(name = 'NMDA',denseinh = False,rate_range=300)
+#SN.plot_EvsDI(name = 'AMPA',denseinh = False)
+#SN.plot_EvsDI(name='NMDA_nonsatur', denseinh=False, rate_range=300)
+
+# Probabilistic NMDA Plateau potentials
+#SN.run_probabilisticNMDAplateau()
+#SN.plot_probabilisticNMDAplateau(subject='dendv')
+#SN.plot_probabilisticNMDAplateau(subject='gTotGABA')
+#SN.plot_probabilisticNMDAplateau(subject='sNMDA')
+
+# Distribution of voltage across time
+#SN.plot_voltagedistribution(denseinh = False)
+
+
+# Dendritic voltage as a function of inhibitory rate and excitatory weight
+#SN.run_DendVvsgErI()
+#SN.plot_DendVvsgErI()
+# Somatic firing as a function of dendritic voltage
+#SN.run_RatevsDendV()
+# Somatic firing as a function of dendritic voltage
+#SN.run_RatevsI()
+
+# Plot mechanism of NMDA Plateau
+#SN.plot_NMDAPlateauMechanism()
+#SN.plot_sNMDAmean()
+
+#=============================================================================
 # Pathway-specific gating
 #=============================================================================
 import PathwayGating
