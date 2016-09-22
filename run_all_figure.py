@@ -4,7 +4,10 @@ Created on Fri Jul 24 17:23:24 2015
 
 @author: guangyuyang
 
-This file should run the simulations for every figure in Yang, Murray, Wang (2015)
+This file should run the simulations for every figure in Yang, Murray, Wang (2016)
+
+Notice that there is dependency between lines: to run later lines,
+you may need to execute earlier lines first
 """
 
 from __future__ import division
