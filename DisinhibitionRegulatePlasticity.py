@@ -667,9 +667,9 @@ class Study():
         start = time.clock()
         # Fit the model to some of the data but not all
         obj_func = lambda para: \
-        0*get_model_sqe(para, result_list3B, experiment3B) + \
-        1*get_model_sqe(para, result_list3D, experiment3D) + \
-        1*get_model_sqe(para, result_list2, experiment2)
+        0*self.get_model_sqe(para, result_list3B, experiment3B) + \
+        1*self.get_model_sqe(para, result_list3D, experiment3D) + \
+        1*self.get_model_sqe(para, result_list2, experiment2)
         Nfeval = 1
         def callbackF(Xi):
             global Nfeval
@@ -688,22 +688,22 @@ class Study():
         print 'time spent %0.6f' % (end-start)
 
 
-        sqe, change_list, wpost_list, para = get_model_sqe(x, result_list2, rich_return=True)
+        sqe, change_list, wpost_list, para = self.get_model_sqe(x, result_list2, rich_return=True)
 
         fig=MyFigure(figsize=(2,2))
         pl = fig.addplot(rect=[0.2,0.15,0.7,0.8])
-        plot_model_result(pl, para, result_list2_full, experiment2_full, plot_data=True)
-        compareWithNevian_CaTrace(para,remakeFig = False,experiment = 'NevianFig5')
+        self.plot_model_result(pl, para, result_list2_full, experiment2_full, plot_data=True)
+        self.compareWithNevian_CaTrace(para,remakeFig = False,experiment = 'NevianFig5')
 
         fig=MyFigure(figsize=(1.5,2))
         pl = fig.addplot(rect=[0.2,0.15,0.7,0.8])
-        plot_model_result(pl, para, result_list3B, experiment3B, plot_data=True)
+        self.plot_model_result(pl, para, result_list3B, experiment3B, plot_data=True)
         #compareWithNevian_CaTrace(para,remakeFig = False,experiment = experiment3B)
 
 
         fig=MyFigure(figsize=(1.5,2))
         pl = fig.addplot(rect=[0.2,0.15,0.7,0.8])
-        plot_model_result(pl, para, result_list3D_full, experiment3D_full, plot_data=True)
+        self.plot_model_result(pl, para, result_list3D_full, experiment3D_full, plot_data=True)
         #compareWithNevian_CaTrace(para,remakeFig = False,experiment = experiment3D)
 
 
